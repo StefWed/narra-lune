@@ -35,12 +35,13 @@ len(words)
 # === Intro Section ===
 st.title("📚 Reading Bingo")
 
-st.markdown("""
-Welcome to the **Reading Bingo Challenge**! 📖✨  
-This is my personal bingo card — a mix of fun, quirky, and challenging prompts to spice up the year’s reading.
 
-Want to play along? 🎲 You can generate your own random bingo card using the same prompt list below!
-""")
+st.write("""
+Welcome to our **Reading Bingo** – a playful way to expand your reading horizons. 📚
+
+Here's my personal bingo card filled with fun and inspiring prompts. It's a mix of genres, themes, and reading twists — 
+perfect for a literary quest.""")
+
 
 # === Show Fixed Personal Bingo ===
 st.subheader("My Bingo Card 🎯")
@@ -49,6 +50,14 @@ st.markdown(personal_card_html, unsafe_allow_html=True)
 
 # === Spacer ===
 st.markdown("---")
+
+st.write("""
+
+### 🎯 Want to play along?
+
+You can generate your own unique bingo card using the button below.
+
+Each card is different — but the challenge is shared. Let's see how many squares you can complete!""")
 
 # === Interactive Generator Section ===
 st.subheader("Generate Your Own Bingo Card")
@@ -66,3 +75,9 @@ st.markdown(st.session_state["bingo_html"], unsafe_allow_html=True)
 #image_path = save_bingo_as_image(st.session_state["bingo_html"])
 #with open(image_path, "rb") as f:
 #    st.download_button("📥 Download Your Bingo Card", f, file_name="reading_bingo_card.png")
+
+st.write("""
+💬 And if you’re ever stuck on a prompt, head to the **next page** where our friendly reading assistant can help 
+match books to your prompts.
+
+""")
