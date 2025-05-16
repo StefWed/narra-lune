@@ -1,27 +1,27 @@
 import random
 
-def generate_bingo_card():
-    # Bingo uses columns B-I-N-G-O with ranges:
-    # B: 1–15, I: 16–30, N: 31–45, G: 46–60, O: 61–75
-    card = []
-    ranges = {
-        'B': list(range(1, 16)),
-        'I': list(range(16, 31)),
-        'N': list(range(31, 46)),
-        'G': list(range(46, 61)),
-        'O': list(range(61, 76)),
-    }
 
-    for col in 'BINGO':
-        card.append(random.sample(ranges[col], 5))
+def generate_word_bingo_html(words, fixed_seed=None):
 
-    # Replace center with "JOKER"
-    card[2][2] = "JOKER"
+    if fixed_seed is not None:
+        random.seed(fixed_seed)
 
-    # Transpose to row-wise format
-    bingo_card = [list(row) for row in zip(*card)]
-    return bingo_card
+    assert len(words) >= 24, "Need at least 24 unique words"
+    selected = random.sample(words, 24)
+    selected.insert(12, "JOKER")  # Center position in 5x5 grid
 
-bingo = generate_bingo_card()
-for row in bingo:
-    print(row)
+    html = "<table style='border-collapse: collapse; width: 100%; text-align: center;'>"
+    for i in range(5):
+        html += "<tr>"
+        for j in range(5):
+            word = selected[i*5 + j]
+
+            bg_color = "#dcd6f7" if word == "JOKER" else "#f5f5fd"
+            html += (
+                f"<td style='border: 1px solid #888; padding: 20px; font-size: 16px; "
+                f"background-color: {bg_color}; color: #222; text-align: center;'>"
+                f"{word}</td>"
+            )
+        html += "</tr>"
+    html += "</table>"
+    return html
