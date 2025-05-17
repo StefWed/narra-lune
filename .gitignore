@@ -33,3 +33,6 @@ Thumbs.db
 
 # Ignore original database
 data/*.db
+
+# PyCharm project files
+.idea/
