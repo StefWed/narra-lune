@@ -1,7 +1,30 @@
 import random
 
+"""
+Bingo Card Generator
+
+This module provides a utility function for generating an HTML representation of a 5x5 word bingo card.
+Each bingo card is filled with random words from a provided list, with a "JOKER" placed in the center cell.
+"""
+
 
 def generate_word_bingo_html(words, fixed_seed=None):
+    """
+        Generate an HTML table representing a 5x5 bingo card filled with random words.
+
+        The function selects 24 unique words at random from the input list and inserts a "JOKER" word
+        in the center of the 5x5 grid (i.e., the 13th cell). The resulting bingo card is styled using inline CSS.
+
+        Parameters:
+            words (list of str): A list containing at least 24 unique words to populate the bingo card.
+            fixed_seed (int, optional): A seed value for the random number generator to ensure reproducibility.
+
+        Returns:
+            str: An HTML string rendering the bingo card as a table.
+
+        Raises:
+            AssertionError: If the input list contains fewer than 24 words.
+        """
 
     if fixed_seed is not None:
         random.seed(fixed_seed)
