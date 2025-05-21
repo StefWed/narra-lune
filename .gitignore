@@ -36,3 +36,10 @@ data/*.db
 
 # PyCharm project files
 .idea/
+
+# environment variable
+.env
+
+debugging_scripts/test_openai.py
+
+debugging_scripts/
