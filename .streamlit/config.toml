@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#9D6BFF"  # Glowing purple (for buttons/links)
+backgroundColor = "#1A103D"  # Deep mystical blue-purple background
+secondaryBackgroundColor = "#2B1B4F"  # Slightly lighter for containers
+textColor = "#F8F7FF"  # Near-white for readability
+font = "monospace"  # Optional, could also try "monospace" for a literary feel
