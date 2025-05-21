@@ -42,15 +42,18 @@ def looks_like_structured_query(text):
         "pages_more_than": r"\bmore than (\d+) pages\b",
         "pages_less_than": r"\bless than (\d+) pages\b",
         "published_before": r"\bpublished before (\d{4})\b",
-        "published_in": r"\bpublished in(?: the year)? (\d{4})\b",
+        "published_in": r"\b(?:published|released) (?:in|during)(?: the year)? (\d{4})\b",
         "title_contains_1": r"(?:the\s)?word ['\"](\w+)['\"] (?:can be found|is|appears)? (?:in|in the)? title",
         "title_contains_2": r"title (?:has|contains|includes) (?:the word )?['\"](\w+)['\"]"
     }
 
     matches = []
 
+    # Convert to lowercase for case-insensitive matching
+    lower_text = text.lower()
+
     for label, pattern in patterns.items():
-        match = re.search(pattern, text.lower())
+        match = re.search(pattern, lower_text)
         if match:
             matches.append({
                 "type": label,

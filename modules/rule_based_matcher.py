@@ -13,12 +13,6 @@ Supported filter types:
     - "published_before": publishing_date < value
     - "published_in": publishing year == value
     - "title_contains_1" / "title_contains_2": title LIKE %value%
-
-Example:
-    >>> filters = [{"type": "pages_less_than", "value": "250"}]
-    >>> result = query_books_by_filters(filters)
-    >>> if result:
-    >>>     title, author, blurb, genre, pages = result
 """
 
 
@@ -36,9 +30,11 @@ def query_books_by_filters(filters):
         tuple or None: A single matching book as a tuple (title, author, blurb, genre, pages),
         or None if no match is found.
     """
-
     conditions = []
     params = []
+
+    # Debug: Print the filters we're processing
+    print(f"Processing filters: {filters}")
 
     for f in filters:
         if f["type"] == "pages_more_than":
@@ -48,11 +44,13 @@ def query_books_by_filters(filters):
             conditions.append("pages < ?")
             params.append(int(f["value"]))
         elif f["type"] == "published_before":
-            conditions.append("publishing_date < ?")
-            params.append(f"{f['value']}-01-01")
+            # Modified for integer pub_date
+            conditions.append("pub_date < ?")
+            params.append(int(f["value"]))
         elif f["type"] == "published_in":
-            conditions.append("strftime('%Y', publishing_date) = ?")
-            params.append(f["value"])
+            # Modified for integer pub_date - exact match on the year
+            conditions.append("pub_date = ?")
+            params.append(int(f["value"]))
         elif f["type"] in ("title_contains_1", "title_contains_2"):
             conditions.append("LOWER(title) LIKE ?")
             params.append(f"%{f['value'].lower()}%")
@@ -68,10 +66,17 @@ def query_books_by_filters(filters):
         LIMIT 1
     """
 
+    # Debug: Print the SQL and parameters
+    print(f"SQL: {sql}")
+    print(f"Params: {params}")
+
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute(sql, params)
     result = cursor.fetchone()
     conn.close()
+
+    # Debug: Print the result
+    print(f"Query result: {result}")
 
     return result
