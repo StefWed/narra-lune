@@ -37,15 +37,17 @@ st.title("📚 Reading Bingo")
 
 
 st.write("""
-Welcome to our **Reading Bingo** – a playful way to expand your reading horizons. 📚
+Welcome to our **Reading Bingo** – a playful way to expand your reading horizons.
+Just like in the good old bingo game, complete a row, column, or full card.
+Let's see how many squares we can complete!
 
-Here's my personal bingo card filled with fun and inspiring prompts. It's a mix of genres, themes, and reading twists — 
-perfect for a literary quest.""")
+Here's my personal bingo card filled with fun and inspiring prompts. It's a mix of genres, themes, and reading twists.
+""")
 
 
 # === Show Fixed Personal Bingo ===
 st.subheader("My Bingo Card 🎯")
-personal_card_html = generate_word_bingo_html(words, fixed_seed=200)  # Add optional seed for a fixed card
+personal_card_html = generate_word_bingo_html(words)
 st.markdown(personal_card_html, unsafe_allow_html=True)
 
 # === Spacer ===
@@ -55,29 +57,29 @@ st.write("""
 
 ### 🎯 Want to play along?
 
-You can generate your own unique bingo card using the button below.
-
-Each card is different — but the challenge is shared. Let's see how many squares you can complete!""")
+You can generate your own unique bingo card using the button below. Each card is different — but the challenge is shared. 
+""")
 
 # === Interactive Generator Section ===
 st.subheader("Generate Your Own Bingo Card")
 
-# Initialize default user bingo
+# Initialize default user bingo with a random seed on first load
 if "bingo_html" not in st.session_state:
     st.session_state["bingo_html"] = generate_word_bingo_html(words)
 
-if st.button("🎲 Generate New Card"):
+# Button to generate a new card with a new random seed
+if st.button("🎲 Generate Personal Card"):
     st.session_state["bingo_html"] = generate_word_bingo_html(words)
 
-st.markdown(st.session_state["bingo_html"], unsafe_allow_html=True)
+    # Display the current bingo card (whether it's the initial one or a previously generated one)
+    st.markdown(st.session_state["bingo_html"], unsafe_allow_html=True)
 
 # === Optional: Download ===
-#image_path = save_bingo_as_image(st.session_state["bingo_html"])
-#with open(image_path, "rb") as f:
+# image_path = save_bingo_as_image(st.session_state["bingo_html"])
+# with open(image_path, "rb") as f:
 #    st.download_button("📥 Download Your Bingo Card", f, file_name="reading_bingo_card.png")
 
 st.write("""
-💬 And if you’re ever stuck on a prompt, head to the **next page** where our friendly reading assistant can help 
-match books to your prompts.
+💬 And if you’re ever stuck on a prompt, head to the **next page** where we can match books to your prompts.
 
 """)

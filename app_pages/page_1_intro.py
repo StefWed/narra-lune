@@ -1,27 +1,69 @@
 import streamlit as st
+from modules.book_picker import get_random_book
 
 st.header("Welcome to ReadingQuest!")
 
 st.write("""
 **Welcome to ReadingQuest – your playful guide through the world of books!**
-ReadingQuest is like a digital treasure hunt for your next favorite book. It’s part game, part
-book-matching companion, like a personal librarian. Whether you read one book a year or devour a stack a week, 
-it helps you discover books in fun, creative ways. 
+ReadingQuest is like a digital treasure hunt for your next favorite read. Part game, part
+book-matching companion, it's your personal librarian. Whether you read one book a year or devour a stack a week, 
+ReadingQuest helps you discover books in fun, creative ways. 
+
+It all starts with reading challenge prompts — playful tasks that ask you to find books based on cover designs, genres, 
+settings, themes, characters, or even a single word in the title. Some are easy, others might send you digging through 
+library stacks or calling a bookish friend for help.
+
+The idea is to step outside your usual reading patterns: read more, read differently, and get creative. To inspire 
+you even more, the app includes a curated selection of book recommendations.
+
+And to make it a shared adventure, we’ve added a Reading Bingo game — you’ll find that on the second page.
+
+So...
+Pack your bookmarks.
+Sharpen your TBR list.
+And step into the story.
+
 
 ---
+
 
 ### What can you do?
 
-- 🎲 **Generate a Random Reading Bingo Card**  
-  Print it, share it, or use it as your yearly reading map.
-
-- 💬 **Chat with our Book Matcher Bot**  
-  Tell it what kind of challenge you're taking on - and it’ll try to find a match using real book blurbs.
-
----
-
-Ready to begin?
 """)
 
-st.page_link("app_pages/page_2_reading_bingo.py", label="➡️ Start with a Bingo Card", icon="🎲")
-st.page_link("app_pages/page_3_challenge_matching.py", label="➡️ Find a Book for a Prompt", icon="🔍")
+st.page_link("app_pages/page_2_reading_bingo.py", label="Start with a Bingo Card", icon="🎲")
+st.write("Print it, share it, or use it as your yearly reading map.")
+
+st.page_link("app_pages/page_3_challenge_matching.py", label="Find a Book for a Reading Prompt", icon="🔍")
+st.write("Get a random prompt or type your own, then find the perfect book match.")
+
+st.write("---")
+
+with st.container():
+    st.subheader("📚 Spotlight Book")
+
+    book = get_random_book()
+
+    if book:
+        title, author, blurb, genre, pages = book
+
+        st.markdown(
+            f"""
+            <div style="
+                border: 1px solid rgba(200, 200, 200, 0.5);
+                border-radius: 10px;
+                padding: 1rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+                margin-bottom: 1.5rem;
+            ">
+                <strong>{title}</strong><br>
+                <em>by {author}</em><br><br>
+                <strong>Genre:</strong> {genre} &nbsp; | &nbsp; <strong>Pages:</strong> {pages}<br><br>
+                <strong>Blurb:</strong> {blurb}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    else:
+        st.warning("No books available yet for Daily Pick!")
