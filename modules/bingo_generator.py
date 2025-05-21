@@ -8,7 +8,7 @@ Each bingo card is filled with random words from a provided list, with a "JOKER"
 """
 
 
-def generate_word_bingo_html(words, fixed_seed=None):
+def generate_word_bingo_html(words):
     """
         Generate an HTML table representing a 5x5 bingo card filled with random words.
 
@@ -17,7 +17,6 @@ def generate_word_bingo_html(words, fixed_seed=None):
 
         Parameters:
             words (list of str): A list containing at least 24 unique words to populate the bingo card.
-            fixed_seed (int, optional): A seed value for the random number generator to ensure reproducibility.
 
         Returns:
             str: An HTML string rendering the bingo card as a table.
@@ -25,9 +24,6 @@ def generate_word_bingo_html(words, fixed_seed=None):
         Raises:
             AssertionError: If the input list contains fewer than 24 words.
         """
-
-    if fixed_seed is not None:
-        random.seed(fixed_seed)
 
     assert len(words) >= 24, "Need at least 24 unique words"
     selected = random.sample(words, 24)
