@@ -1,13 +1,13 @@
 import streamlit as st
 from modules.book_picker import get_random_book
 
-st.header("Welcome to ReadingQuest!")
+st.header("Welcome to NarraLune!")
 
 st.write("""
-**Welcome to ReadingQuest – your playful guide through the world of books!**
-ReadingQuest is like a digital treasure hunt for your next favorite read. Part game, part
+**Welcome to NarraLune – your playful guide through the world of books!**
+NarraLune is like a digital treasure hunt for your next favorite read. Part game, part
 book-matching companion, it's your personal librarian. Whether you read one book a year or devour a stack a week, 
-ReadingQuest helps you discover books in fun, creative ways. 
+NarraLune helps you discover books in fun, creative ways. 
 
 It all starts with reading challenge prompts — playful tasks that ask you to find books based on cover designs, genres, 
 settings, themes, characters, or even a single word in the title. Some are easy, others might send you digging through 
