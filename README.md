@@ -26,7 +26,7 @@ Besides integrating the curated database, keeping LLM Usage purposeful and cost-
 
 For the overall user interface/ web application it was decided on three pages:
 
-1. A landing page which introduces the project and includes links to the other pages. It also intergartes a "Spotlight Book" - a random book recommendation, pulled from the existing database.
+1. A landing page which introduces the project and includes links to the other pages. It also integrates a "Spotlight Book" - a random book recommendation, pulled from the existing database.
 
 2. A gamification page. This page includes a personal bingo card with 24 reading prompts (played by the developer) and the possibility for the user to generate an own bingo card with the same prompts to play along.
 
