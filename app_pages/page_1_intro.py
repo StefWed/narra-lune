@@ -9,14 +9,14 @@ NarraLune is like a digital treasure hunt for your next favorite read. Part game
 book-matching companion, it's your personal librarian. Whether you read one book a year or devour a stack a week, 
 NarraLune helps you discover books in fun, creative ways. 
 
-It all starts with reading challenge prompts — playful tasks that ask you to find books based on cover designs, genres, 
+It all starts with reading challenge prompts — tasks that ask you to find books based on cover designs, genres, 
 settings, themes, characters, or even a single word in the title. Some are easy, others might send you digging through 
 library stacks or calling a bookish friend for help.
 
 The idea is to step outside your usual reading patterns: read more, read differently, and get creative. To inspire 
 you even more, the app includes a curated selection of book recommendations.
 
-And to make it a shared adventure, we’ve added a Reading Bingo game — you’ll find that on the second page.
+And to make it a shared adventure, I’ve added a Reading Bingo game — you’ll find that on the second page.
 
 So...
 Pack your bookmarks.
