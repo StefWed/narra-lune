@@ -46,7 +46,7 @@ Here's my personal bingo card filled with fun and inspiring prompts. It's a mix 
 
 
 # === Show Fixed Personal Bingo ===
-st.subheader("My Bingo Card 🎯")
+st.subheader("My Bingo Card")
 personal_card_html = generate_word_bingo_html(words)
 st.markdown(personal_card_html, unsafe_allow_html=True)
 
@@ -55,7 +55,7 @@ st.markdown("---")
 
 st.write("""
 
-### 🎯 Want to play along?
+### Want to play along?
 
 You can generate your own unique bingo card using the button below. Each card is different — but the challenge is shared. 
 """)
@@ -79,7 +79,3 @@ if st.button("🎲 Generate Personal Card"):
 # with open(image_path, "rb") as f:
 #    st.download_button("📥 Download Your Bingo Card", f, file_name="reading_bingo_card.png")
 
-st.write("""
-💬 And if you’re ever stuck on a prompt, head to the **next page** where we can match books to your prompts.
-
-""")
