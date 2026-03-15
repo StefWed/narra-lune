@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 import os
 import openai
 
+from openai.types.chat import ChatCompletionSystemMessageParam, ChatCompletionUserMessageParam
+
 # Load variables from .env
 load_dotenv()
 
@@ -16,13 +18,15 @@ def extract_genre_with_llm(prompt_text):
     Returns a genre string if one is confidently identified, else None.
     """
     system_prompt = (
-        "You are a book genre expert. Your task is to analyze the reading challenge prompt "
-        "and extract the specific genre of book that would satisfy this challenge. "
-        "Look for explicit genre mentions as well as implicit genre suggestions. "
-        "Consider common genres like: Fantasy, Science Fiction, Mystery, Murder Mystery, Thriller, Horror, "
-        "Romance, Historical Fiction, Literary Fiction, Non-Fiction, Biography, Memoir, "
-        "Self-Help, Young Adult, Children's, Poetry, Drama, Dystopia, Adventure, etc. "
-        "If multiple genres could apply, select the most specific or dominant one."
+        """
+        You are a book genre expert. Your task is to analyze the reading challenge prompt
+        and extract the specific genre of book that would satisfy this challenge. 
+        Look for explicit genre mentions as well as implicit genre suggestions. 
+        Consider common genres like: Fantasy, Science Fiction, Mystery, Murder Mystery, Thriller, 
+        Horror, Romance, Historical Fiction, Literary Fiction, Non-Fiction, Biography, Memoir, 
+        Self-Help, Young Adult, Children's, Poetry, Drama, Dystopia, Adventure, etc. 
+        If multiple genres could apply, select the most specific or dominant one.
+        """
     )
 
     user_prompt = (
@@ -36,8 +40,8 @@ def extract_genre_with_llm(prompt_text):
         response = client.chat.completions.create(
             model="gpt-4o",  # or "gpt-3.5-turbo"
             messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}
+                ChatCompletionSystemMessageParam(role="system", content=system_prompt),
+                ChatCompletionUserMessageParam(role="user", content=user_prompt),
             ],
             temperature=0.3
         )
