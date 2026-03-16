@@ -62,7 +62,6 @@ random_card = [
 ]
 
 
-
 # === Intro Section ===
 st.title("📚 Reading Bingo")
 
