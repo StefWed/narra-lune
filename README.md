@@ -54,4 +54,4 @@ LLM component compares book blurbs to abstract prompts to find matches.
 ### Database
 
 * You will find a schema to create your own database if needed.
-* Seeds will be added as an example on how to fill the database.
+* Seeds have been added as an example and offering a starter to fill the database.
